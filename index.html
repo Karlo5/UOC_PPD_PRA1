@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Vídeo de Mostra</title>
+</head>
+<body>
+<div class="lateral_bar">
+	<ul>
+	<li><a href="#tasca11">Tasca 1.1</a></li>
+	<li><a href="#tasca12">Tasca 1.2</a></li>
+	<li><a href="#tasca13">Tasca 1.3</a></li>
+	<li><a href="#tasca14">Tasca 1.4</a></li>
+	<li><a href="#tasca15">Tasca 1.5</a></li>
+	</ul>
+
+</div>
+<div class="main">
+    	<h1><br>PRÁCTICA PLATAFORMES DE PUBLICACIÓ I DISTRIBUCIÓ UOC 1r SEMESTRE 2024</h1>
+    	
+    	<p id="inici"> El video que es mostra a continuació es el que correspon al codi de la <a href="#tasca12">tasca 1.2</a>. Per a mes 	detall desplaçar-se a aquest apartat o consultar el codi font de la pàgina</p>
+	<div class="video-container">
+	    <video controls width="640" height="360">
+	        <source src="videos/Park1-h264.mp4" type="video/mp4">
+	        <source src="videos/Park1-h265.webm" type="video/mp4">
+	        <source src="videos/Park1-vp9.webm" type="video/webm">
+	        El teu navegador no suporta el tag de vídeo.
+	    </video>
+	</div>
+    <h2 id="tasca11">Tasca 1.1</h2>
+	<p><i>Tria un clip de vídeo de màxim 20 segons (pots crear-lo amb el teu dispositiu mòbil, que tingui objectes en detall i en 			moviment) i codifica’l amb Avidemux triant el format i resolució que creguis adients per a la seva publicació en web. 			Tenint en compte que no tots els navegadors accepten tots els còdecs, codifica el vídeo en els formats necessaris per tal 			què sigui compatible amb el màxim de navegadors possible. Explica les decisions preses en la codificació i el perquè de 			cadascuna. Confirma amb l’eina MediaInfo que l’ha codificat a la velocitat que volies.</i></p>
+    
+	<p>Es tria un vídeo de un parc d'atraccions de 19 segons perque te objectes diversos en detall i moviment. Es trien els format de 	codificació h264, h265 i VP9 per les següents raons:<br>
+	<ol>
+        <li><strong>h264 (MPEG-4 AVC)</strong><br><ul>
+        	<li>Compatibilitat universal: h264 és àmpliament suportat per la majoria dels navegadors moderns, incloent Google Chrome, 			Mozilla Firefox, Microsoft Edge, Safari i Opera. Això assegura que el vídeo es pugui reproduir sense problemes a través de 		diferents plataformes i dispositius.</li>
+        	<li>Qualitat vs. Compressió: Ofereix una bona qualitat de vídeo mantenint una mida de fitxer relativament petita, el que 			és beneficiós tant per a l'usuari (menys consum de dades) com per al proveïdor de contingut (menys costos d'emmagatzematge 		i banda ampla).</li>
+        </ul></li>
+
+    	<li><strong>h265 (HEVC)</strong><br><ul>
+        	<li>Eficàcia de compressió: h265 és la versió millorada d'h264, oferint fins a un 50% millor compressió per a la mateixa 			qualitat de vídeo. Això és particularment útil per a vídeos en alta resolució (com 4K i 8K) perquè redueix 			significativament la mida dels fitxers.</li>
+        	<li>Compatibilitat creixent: Tot i que la compatibilitat d'h265 no és tan universal com la d'h264, està en augment. 		Navegadors moderns i dispositius més recents comencen a suportar aquest format de manera més consistent. Navegadors com 			Safari i Microsoft Edge ja suporten h265, mentre que Chrome i Firefox poden necessitar plugins addicionals o suport a 			través de HTML5 i JavaScript.</li></ul></il>
+
+    	<li><strong>WebM (VP8/VP9)</strong><br><ul>
+        	<li>Open Source i lliure de royalties: WebM és un format de vídeo desenvolupat per Google que utilitza els còdecs VP8 i 			VP9. Aquest format és lliure de royalties, el que és avantatjós per als desenvolupadors i distribuïdors de contingut.</li>
+        	<li>Compatibilitat amb navegadors: WebM és nativament suportat per Google Chrome, Mozilla Firefox, Opera i altres 			navegadors basats en Chromium. Això el fa ideal per a ús en entorns web on aquests navegadors són predominants.</li>
+        	<li>Qualitat vs. Compressió: VP9, en particular, ofereix una compressió comparable a h265, el que significa que pot oferir 		alta qualitat de vídeo amb mides de fitxer més petites, similar a h265.</li>
+        </ul></li>
+        </ol>
+        </p>
+        <p>Pel que fa a la velocitat de compressió no s'ha triat cap. Amb el mediainfo s'ha comprobat que la velocitat esta entorn als 18 	Mb/s com es pot veure a la figura 1. Donat que asumim un ample de banda doméstic entorn als 100 Mb/s o superior no considerem que 	aquesta velocitat pugui ser un problema per a la reproducció fluida del vídeo</p>
+        
+        <img src="img/11mediainf.png" />
+        <p> Figura 1.</p>
+        
+        <h2 id="tasca12">Tasca 1.2</h2>
+	<p><i>Crea la web. Genera un fitxer .html mitjançant un editor de text, incrusta-li el clip de vídeo codificat
+	utilitzant el tag &ltvideo&gt d'HTML5 i prepara la web perquè pugui ser visualitzada des de la major part dels
+	navegadors. Què caracteritza el format HTML5 en publicació i visualització d'un vídeo respecte d’altres
+	mètodes de publicació?</i></p>
+	
+	<p>Al <a href="#inici">inici</a> d'aquesta pàgina es troba el següent codi (figura 2):</p>
+
+        <img src="img/12codevideo.png" />
+        <p> Figura 2.</p>
+		
+	<p>Es pot probar visualitzant el propi codi font de la pàgina web actual. S'han possat com a sources els tres formats de video 		explicats a la tasca 1.1 per tal de fer la pàgina el més compatible possible.</p>
+	
+	<p>Pel que fa al format HTML5 ha suposat una revolució en la publicació i visualització, per exemple, de vídeos a la web, i 		ofereix diversos avantatges respecte als mètodes més antics com Flash o plugins propietaris. Una de les seves 			característiques principals és la integració nativa amb els navegadors moderns, eliminant la necessitat d'instal·lar 		plugins addicionals, cosa que millora la compatibilitat i la seguretat.</p>
+
+	<p>L'etiqueta &ltvideo&gt d'HTML5 facilita la inserció de vídeos en pàgines web, permetent als desenvolupadors controlar la 		reproducció amb atributs senzills com `controls` o `autoplay`. A més, HTML5 és compatible amb diversos còdecs de vídeo, 		com H.264, H.265 i WebM, oferint flexibilitat per triar el format més adequat segons les necessitats de compatibilitat i qualitat. 	</p>
+
+	<p>HTML5 també destaca per la seva compatibilitat multi-plataforma, assegurant una experiència de visualització consistent en 		diferents dispositius, incloent-hi mòbils i tauletes. Això es complementa amb una millor eficiència en l'ús de recursos del 		sistema, cosa que resulta en una reproducció més suau i un menor consum de bateria, especialment en dispositius mòbils.</p>
+
+	<p>L'accessibilitat és un altre punt fort d'HTML5, gràcies a l'etiqueta &lttrack&gt, que facilita la integració de subtítols i 		altres funcions accessibles. A més, la seva API de JavaScript, que no es farà servir en aquesta pràctica per simplicitat, permet 		un control programàtic extens de la reproducció, oferint més flexibilitat als desenvolupadors. En resum, HTML5 ofereix una solució 	més segura, eficient i accessible per a la publicació i visualització de vídeos a la web.
+	
+	<h2 id="tasca13">Tasca 1.3</h2>
+	
+	<p><i>Publica el fitxer .html i el vídeo en un servidor web gratuït o al CDN vist a la PAC1 (web estàtica)
+	per tal de veure’l amb una adreça http pública i valora la experiència a nivell d’usuari/a (retard de
+	visualització, qualitat, etc).</i><p>
+	
+	
+	<h2 id="tasca14">Tasca 1.4</h2>
+	
+	<h2 id="tasca15">Tasca 1.5</h2>
+	
+	
+</div>
+    
+</body>
+</html>
+
