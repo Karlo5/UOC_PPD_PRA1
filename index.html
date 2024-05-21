@@ -50,7 +50,7 @@
         </ul></li>
         </ol>
         </p>
-        <p>Pel que fa a la velocitat de compressió no s'ha triat cap. Amb el mediainfo s'ha comprobat que la velocitat esta entorn als 18 	Mb/s com es pot veure a la figura 1. Donat que asumim un ample de banda doméstic entorn als 100 Mb/s o superior no considerem que 	aquesta velocitat pugui ser un problema per a la reproducció fluida del vídeo</p>
+        <p>Pel que fa a la resolució dels vídeos i dels fps donat que els fitxers no podien ser més grans de 25 Mb per al servidor que es 	va triar (Netlify, <a href="#tasca13">tasca 1.3</a> es van tenir que fer algunes adaptacions. El fitxer original es grabat amb movil amb resolució 1920x1080 i 29,4 fps, ocupava uns 50 Mb. Comprimit amb H.264 i H.265 sense més modificacions es podien arribar als 30-40 Mb màxim. Primer es va probar a afegir el filtre per baixar a 24 fps però el vídeo perdia fluïdesa clarament. Com a consecuencia per a les codificacions mencionades es va reduir el tamany a 1152x648 com es pot veure a la figura 1 amb el media info. Pel que fa a la webm el tamany (3 Mb) va ser prou petit per no haver de fer res més.</p>
         
         <img src="img/11mediainf.png" />
         <p> Figura 1.</p>
