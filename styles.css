@@ -51,7 +51,7 @@ overflow: hidden;
 }
 
 .lateral_bar {
-width: 200px; 
+width: 100px; 
 float: left; 
 border-right: black 1px solid;
 border-bottom: black 1px solid;
@@ -60,7 +60,7 @@ position: fixed;
 }
 
 .main {
-margin-left: 210px;
+margin-left: 110px;
 background-color: white;
 }
 

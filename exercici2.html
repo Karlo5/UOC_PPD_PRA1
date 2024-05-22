@@ -94,8 +94,133 @@ escrius les respostes d'aquesta pràctica.</i></p>
 	
 	<p><i>Enfocant-nos en la transmissió en viu d’un stream de vídeo mitjançant un servei de cloud CDN,
 aquests ofereixen múltiples modes de distribució, com per exemple streaming de baixa latència per entorns
-de mínim retard, streaming per OTT, etc... fins i tot interactiu!.</i></p>
-	
+de mínim retard, streaming per OTT, etc... fins i tot interactiu!. De les múltiples opcions que pots trobar, centra’t en una i descriu el procés (màxim tres pàgines). Si en el procés s’apliquen polítiques específiques d’usuaris o recursos, roles de gestió i administració de serveis, indica-ho. I opcionalment i si l’entorn t’ho permet, fes un càlcul estimatiu de cost per minut d’una transmissió dins
+una mateixa regió d’un stream HD en directe per 10.000 usuaris simultanis.</i></p>
+
+    <h4>Transmissió en viu d'un stream de vídeo mitjançant un servei de cloud CDN amb baixa latència</h4>
+
+    <h4>Introducció</h4>
+    <p>
+        La transmissió en viu amb baixa latència és crucial per a aplicacions on el retard ha de ser mínim, com en esdeveniments esportius, notícies en directe, jocs en línia i altres esdeveniments interactius. Els serveis de CDN (Content Delivery Network) en el núvol ofereixen solucions específiques per minimitzar la latència i proporcionar una experiència de visualització fluida. En aquesta descripció ens centrarem en el procés de transmissió de vídeo en viu de baixa latència utilitzant Amazon Web Services (AWS) com a exemple.
+    </p>
+
+    <h4>Procés de Transmissió en Viu amb Baixa Latència</h4>
+    
+    <h5>1. Configuració de l'Infraestructura de Transmissió</h5>
+    <ol>
+        <li><strong>Càmera i Codificador:</strong>
+            <ul>
+                <li>El flux de vídeo en viu es captura utilitzant una càmera de vídeo.</li>
+                <li>El vídeo capturat es passa a través d'un codificador que converteix el senyal de vídeo a un format digital adequat per a la transmissió (per exemple, H.264 per al vídeo i AAC per a l'àudio).</li>
+            </ul>
+        </li>
+        <li><strong>Transmissió al Punt d'Entrada:</strong>
+            <ul>
+                <li>El codificador envia el flux de vídeo a un punt d'entrada de la xarxa utilitzant protocols com RTMP (Real-Time Messaging Protocol).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h5>2. Distribució a través del Servei de Cloud CDN</h5>
+    <ol>
+        <li><strong>Ingestió a AWS Elemental MediaLive:</strong>
+            <ul>
+                <li>AWS Elemental MediaLive rep el flux de vídeo en viu del codificador.</li>
+                <li>MediaLive processa el flux de vídeo, aplicant transcodificació en temps real per generar múltiples variants adaptatives (diferents resolucions i bitrates).</li>
+            </ul>
+        </li>
+        <li><strong>AWS Elemental MediaPackage:</strong>
+            <ul>
+                <li>Les variants transcodificades es passen a AWS Elemental MediaPackage.</li>
+                <li>MediaPackage crea paquets de vídeo que es poden distribuir en formats de transmissió com HLS (HTTP Live Streaming) i DASH (Dynamic Adaptive Streaming over HTTP).</li>
+                <li>S'activen les opcions de baixa latència, com l'HLS de baixa latència (LL-HLS).</li>
+            </ul>
+        </li>
+        <li><strong>Distribució amb Amazon CloudFront:</strong>
+            <ul>
+                <li>Amazon CloudFront, el CDN de AWS, distribueix els paquets de vídeo als espectadors de manera global.</li>
+                <li>CloudFront té punts de presència (PoP) a tot el món que emmagatzemen a la memòria cau i lliuren el contingut amb baixa latència.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h5>3. Reproducció per part dels Usuaris Finals</h5>
+    <ol>
+        <li><strong>Accés al Flux de Vídeo:</strong>
+            <ul>
+                <li>Els usuaris finals accedeixen al flux de vídeo en viu a través d'una aplicació o lloc web.</li>
+                <li>El reproductor de vídeo de l'aplicació fa peticions als servidors de CloudFront per obtenir els segments de vídeo.</li>
+            </ul>
+        </li>
+        <li><strong>Reproducció de Baixa Latència:</strong>
+            <ul>
+                <li>El reproductor de vídeo descodifica i reprodueix els segments de vídeo amb un retard mínim, proporcionant una experiència de baixa latència als usuaris.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h4>Polítiques d'Usuaris i Recursos, Rols de Gestió</h4>
+    <ul>
+        <li><strong>Polítiques d'Usuaris:</strong>
+            <ul>
+                <li>Es poden establir polítiques de control d'accés per assegurar que només els usuaris autoritzats puguin accedir a la transmissió en viu.</li>
+                <li>Mitjançant AWS IAM (Identity and Access Management), es pot controlar qui té permís per gestionar els serveis de transmissió.</li>
+            </ul>
+        </li>
+        <li><strong>Rols de Gestió i Administració:</strong>
+            <ul>
+                <li>Administradors de Sistema: Configuren i mantenen la infraestructura de transmissió, gestionen les polítiques de seguretat i supervisen el rendiment.</li>
+                <li>Operadors de Contingut: Gestionen els fluxos de vídeo en viu, incloent-hi la codificació i la ingesta de vídeo.</li>
+                <li>Desenvolupadors: Integren el flux de vídeo a les aplicacions i llocs web, optimitzant el reproductor de vídeo per a la baixa latència.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>Càlcul Estimatiu de Cost</h4>
+    <p>
+        Per a una transmissió en viu en HD amb 10,000 usuaris simultanis dins d'una mateixa regió, fem una estimació dels costos utilitzant les tarifes aproximades de AWS.
+    </p>
+
+    <ul>
+        <li><strong>Ingressió de Vídeo (MediaLive):</strong>
+            <ul>
+                <li>Suposem una taxa de $0.10 per minut per un canal en viu en HD.</li>
+            </ul>
+        </li>
+        <li><strong>Embalatge (MediaPackage):</strong>
+            <ul>
+                <li>Suposem $0.025 per GB processat. Amb una taxa de bits de 5 Mbps per HD, això equival a 2.25 GB per hora per usuari.</li>
+            </ul>
+        </li>
+        <li><strong>Distribució (CloudFront):</strong>
+            <ul>
+                <li>Suposem $0.085 per GB lliurat dins de la mateixa regió.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>Càlcul del cost per minut:</p>
+    <ol>
+        <li><strong>Ingressió de Vídeo:</strong>
+            <p>0.10 $ × 1 min = 0.10 $</p>
+        </li>
+        <li><strong>Embalatge:</strong>
+            <p>2.25 GB/hora × (1 min / 60 min/hora) × 0.025 $/GB = 0.0009375 $ per usuari</p>
+            <p>0.0009375 $ × 10,000 usuaris = 9.375 $</p>
+        </li>
+        <li><strong>Distribució:</strong>
+            <p>2.25 GB/hora × (1 min / 60 min/hora) × 0.085 $/GB = 0.0031875 $ per usuari</p>
+            <p>0.0031875 $ × 10,000 usuaris = 31.875 $</p>
+        </li>
+    </ol>
+
+    <p><strong>Cost total per minut:</strong></p>
+    <p>0.10 $ + 9.375 $ + 31.875 $ = 41.35 $/min</p>
+
+    <h4>Conclusions</h4>
+    <p>
+        La transmissió en viu amb baixa latència utilitzant un servei de cloud CDN com AWS implica diversos passos, des de la captura i codificació del vídeo fins a la distribució i reproducció pels usuaris finals. El procés inclou polítiques d'usuaris i gestió de recursos per garantir la seguretat i eficàcia de la transmissió. Els costos associats poden variar segons el servei utilitzat i els requisits específics, però una estimació proporciona una guia per planificar el pressupost de la transmissió en viu.
+    </p>
 </div>
     
 </body>
