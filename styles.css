@@ -62,6 +62,7 @@ position: fixed;
 .main {
 margin-left: 110px;
 background-color: white;
+float: right;
 }
 
 .img1 {
