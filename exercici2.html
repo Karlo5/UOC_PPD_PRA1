@@ -83,12 +83,28 @@ CONTINGUT a la qual està arribant el stream (pren un valor mitjà aproximat).</
 	<p><i>si realitzes una pausa en el VLC emissor, quants segons triga en pausar-se el vídeo al receptor?
 Per què? Torna-ho a posar en reproducció.</i></p>
 	
+	<p>La quantitat de temps aproximat que triga en aturar-se o possar-se en marxa es d'una 2-3 segons. La quantitat de temps que trigarà el vídeo a aturar-se al client després de posar en pausa l'emissió al servidor depèn de diversos factors com poden ser:
+	<ol>
+    	<li><strong>Memòria intermèdia (buffer):</strong> El client (receptor) tindrà una certa quantitat de dades emmagatzemades en memòria intermèdia abans que es reprodueixin. Aquestes dades emmagatzemades són una mena de "coixí" per assegurar una reproducció fluida, fins i tot si hi ha petites interrupcions en la transmissió de dades.</li>
+
+    	<li><strong>Taxa de bits (bitrate):</strong> La taxa de bits del vídeo és de 5000 kbps a l'emissió i .</li>
+
+    	<li><strong>Capacitat de la memòria intermèdia:</strong> La memòria intermèdia del client es mesura en termes de temps de reproducció que pot contenir, que sovint es pot ajustar a les opcions del VLC. Suposem, per exemple, que la memòria intermèdia està configurada per contenir 10 segons de dades de vídeo.</li>
+    	</ol>
+
+<p>Per fer un càlcul aproximat i afengint la dada que el clip01 ocupa un espai en disc de 12Mb onsiderem que la memòria interna del buffer es tot el video (que es reprodueix en bucle). Sabent aquestes dades tindriem que el video donada la taxa de reproducció es podría reproduir 12 Mb/5000kbps = 2,4 segons. Si asumim que aquesta es la capacitat de memoria intermitja (que no s'ha definit en cap opció de VLC) els valors encaixen força bé amb la resposta que obtenim del sistema.</p>
 	<h2 id="tasca25">Tasca 2.5</h2>
 	
 	<p><i>Calcula aproximadament la compressió que el VLC d'emissió està realitzant al transcodificar el
 fitxer emmagatzemat a stream. Realitza una captura de pantalla de l'escriptori amb els dos VLC en marxa i les
 seves finestres amb les estadístiques de cadascun obertes, i insereix la captura en el document en el qual
 escrius les respostes d'aquesta pràctica.</i></p>
+	
+	<p>A continuació es mostra la imatge demanada en la figura 8. A la esquerra es pot trobar la finestra d'estadística de la emissió mentre que a la dreta es trova la de recepció. La tasa de bits de contingut de l'emissió es força inestable i tot i que podem veure el valor 4992 kb/s realmente els valor que es poden veure oscil·len entre 3000 i 6000 kb/s realmente. Es esperable que la mitjana estigui força a prop de 5000 kb/s que es la taxa a la que hem definit el vídeo clp01 a la tasca 2.1. La recepció si que es força estable i es troba entorno als 1550 kbps. Fent la divissió dels dos valors podríem dir que la compressió que está realitzant el VLC es d'un factor 3,2 al reailtzar el stream.<br></p>
+	
+        <img src="img/25est.png" />
+        <p> Figura 8.</p>
+	
 	
 	<h2 id="tasca26">Tasca 2.6</h2>
 	
@@ -100,8 +116,7 @@ una mateixa regió d’un stream HD en directe per 10.000 usuaris simultanis.</i
     <h4>Transmissió en viu d'un stream de vídeo mitjançant un servei de cloud CDN amb baixa latència</h4>
 
     <h4>Introducció</h4>
-    <p>
-        La transmissió en viu amb baixa latència és crucial per a aplicacions on el retard ha de ser mínim, com en esdeveniments esportius, notícies en directe, jocs en línia i altres esdeveniments interactius. Els serveis de CDN (Content Delivery Network) en el núvol ofereixen solucions específiques per minimitzar la latència i proporcionar una experiència de visualització fluida. En aquesta descripció ens centrarem en el procés de transmissió de vídeo en viu de baixa latència utilitzant Amazon Web Services (AWS) com a exemple.
+    <p>La transmissió en viu amb baixa latència és crucial per a aplicacions on el retard ha de ser mínim, com en esdeveniments esportius, notícies en directe, jocs en línia i altres esdeveniments interactius. Els serveis de CDN (Content Delivery Network) en el núvol ofereixen solucions específiques per minimitzar la latència i proporcionar una experiència de visualització fluida. En aquesta descripció ens centrarem en el procés de transmissió de vídeo en viu de baixa latència utilitzant Amazon Web Services (AWS) com a exemple.
     </p>
 
     <h4>Procés de Transmissió en Viu amb Baixa Latència</h4>
