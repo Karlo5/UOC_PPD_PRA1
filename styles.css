@@ -51,12 +51,18 @@ overflow: hidden;
 }
 
 .lateral_bar {
+display: none;
+}
+
+@media screen (min-with = 400px){
+.lateral_bar {
 width: 100px; 
 float: left; 
 border-right: black 1px solid;
 border-bottom: black 1px solid;
 background-color: #808080;
 position: fixed;
+}
 }
 
 .main {
