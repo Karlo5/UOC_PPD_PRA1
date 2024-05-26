@@ -42,32 +42,20 @@ H3 {
 margin: 100px
 }
 
-.video-container {
-position: relative;
-padding-bottom: 45.0%;
-padding-top: 0;
-height: 0;
-overflow: hidden;
-}
-
+@media (min-width: 30em) {
 .lateral_bar {
-display: none;
-}
+	width: 150px; 
+	float: left; 
+	border-right: black 1px solid;
+	border-bottom: black 1px solid;
+	background-color: #808080;
+	position: fixed;
+	}
 
-@media screen (min-with = 400px){
-.lateral_bar {
-width: 100px; 
-float: left; 
-border-right: black 1px solid;
-border-bottom: black 1px solid;
-background-color: #808080;
-position: fixed;
-}
-
-.main {
-margin-left: 110px;
-background-color: white;
-}
+	.main {
+	margin-left: 160px;
+	background-color: white;
+	}
 }
 
 .img1 {

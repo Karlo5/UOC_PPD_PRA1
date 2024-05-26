@@ -33,9 +33,10 @@
 
 	<p>A continuació es presenta el video demanat anomenat clip01 codificat i configurat segons les característiques demanades a la 		tasca.</p>
 	
-	<p><video src="videos/clip01.mkv" type='video/mp4; codecs="theora, vorbis"' autoplay controls width="640" height="360"></video></p>
+	        <p><video src="videos/clip01.mkv" type='video/mp4; codecs="theora, vorbis"' autoplay controls width="640" height="360"></video></p>
 	<p>Si la reproducció falla per falta de compatibilitat mkv amb el navegador pots baixar l'arxiu mkv <a href="videos/clip01.zip">aquí</a>.</p>
 	
+	<p><br></p>	
 	<p>I a la següent figura (figura 3.) es mostra a captura del mediainfo del arxiu. El valors que es mostren a la figura 		 	coincideixen amb els demanats a la pràctica: 5000 kbps, audio mp3, contenidor Matroska, video AVC</p>
 
 	<img src="img/21fig3.png" />
@@ -114,14 +115,14 @@ una mateixa regió d’un stream HD en directe per 10.000 usuaris simultanis.</i
     <h4>Transmissió en viu d'un stream de vídeo mitjançant un servei de cloud CDN amb baixa latència</h4>
 
     <h4>Introducció</h4>
-    <p>La transmissió en viu amb baixa latència és crucial per a aplicacions on el retard ha de ser mínim, com en esdeveniments esportius, notícies en directe, jocs en línia i altres esdeveniments interactius. Els serveis de CDN (Content Delivery Network) en el núvol ofereixen solucions específiques per minimitzar la latència i proporcionar una experiència de visualització fluida. En aquesta descripció ens centrarem en el procés de transmissió de vídeo en viu de baixa latència utilitzant Amazon Web Services (AWS) com a exemple.
+    <p>La transmissió en viu amb baixa latència és crucial per a aplicacions on el retard ha de ser mínim, com en esdeveniments esportius, notícies en directe, jocs en línia i altres esdeveniments interactius. Els serveis de CDN en el núvol ofereixen solucions específiques per minimitzar la latència i proporcionar una experiència de visualització fluida. En aquesta descripció ens centrarem en el procés de transmissió de vídeo en viu de baixa latència utilitzant Amazon Web Services (AWS) com a exemple, utilizat en les PACs anteriors.
     </p>
 
     <h4>Procés de Transmissió en Viu amb Baixa Latència</h4>
     
     <h5>1. Configuració de l'Infraestructura de Transmissió</h5>
     <ol>
-        <li><strong>Càmera i Codificador:</strong>
+        <li><strong>Càmara i Codificador:</strong>
             <ul>
                 <li>El flux de vídeo en viu es captura utilitzant una càmera de vídeo.</li>
                 <li>El vídeo capturat es passa a través d'un codificador que converteix el senyal de vídeo a un format digital adequat per a la transmissió (per exemple, H.264 per al vídeo i AAC per a l'àudio).</li>
@@ -191,18 +192,18 @@ una mateixa regió d’un stream HD en directe per 10.000 usuaris simultanis.</i
 
     <h4>Càlcul Estimatiu de Cost</h4>
     <p>
-        Per a una transmissió en viu en HD amb 10,000 usuaris simultanis dins d'una mateixa regió, fem una estimació dels costos utilitzant les tarifes aproximades de AWS.
+        Per a una transmissió en viu en HD amb 10,000 usuaris simultanis dins d'una mateixa regió, es fa una estimació dels costos utilitzant les tarifes aproximades de AWS.
     </p>
 
     <ul>
-        <li><strong>Ingressió de Vídeo (MediaLive):</strong>
+        <li><strong>Ingress de Vídeo (MediaLive):</strong>
             <ul>
                 <li>Suposem una taxa de $0.10 per minut per un canal en viu en HD.</li>
             </ul>
         </li>
         <li><strong>Embalatge (MediaPackage):</strong>
             <ul>
-                <li>Suposem $0.025 per GB processat. Amb una taxa de bits de 5 Mbps per HD, això equival a 2.25 GB per hora per usuari.</li>
+                <li>Suposem $0.025 per GB processat. Amb una taxa de bits de 5 Mbps per HD, això equival a 0.058 $ per hora per usuari.</li>
             </ul>
         </li>
         <li><strong>Distribució (CloudFront):</strong>
@@ -214,21 +215,21 @@ una mateixa regió d’un stream HD en directe per 10.000 usuaris simultanis.</i
 
     <p>Càlcul del cost per minut:</p>
     <ol>
-        <li><strong>Ingressió de Vídeo:</strong>
-            <p>0.10 $ × 1 min = 0.10 $</p>
+        <li><strong>Ingress de Vídeo:</strong>
+            <p>0.10 $ × 1 min = 0.10 $/min</p>
         </li>
         <li><strong>Embalatge:</strong>
-            <p>2.25 GB/hora × (1 min / 60 min/hora) × 0.025 $/GB = 0.0009375 $ per usuari</p>
-            <p>0.0009375 $ × 10,000 usuaris = 9.375 $</p>
+            <p>2.34 GB/hora × 0.025 $/GB = 0.058 $ per usuari</p>
+            <p>0.058 $ × 10,000 usuaris = 58 $</p>
         </li>
         <li><strong>Distribució:</strong>
-            <p>2.25 GB/hora × (1 min / 60 min/hora) × 0.085 $/GB = 0.0031875 $ per usuari</p>
-            <p>0.0031875 $ × 10,000 usuaris = 31.875 $</p>
+            <p>2.34 GB/hora × 0.085 $/GB = 0.1989 $ per usuari</p>
+            <p>0.1989 $ × 10,000 usuaris = 1989 $</p>
         </li>
     </ol>
 
     <p><strong>Cost total per minut:</strong></p>
-    <p>0.10 $ + 9.375 $ + 31.875 $ = 41.35 $/min</p>
+    <p>0.10 $ + 58/60min $ + 1989/60min $ = 34.21 $/min</p>
 
     <h4>Conclusions</h4>
     <p>
